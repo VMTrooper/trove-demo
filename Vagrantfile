@@ -2,7 +2,8 @@
 
 puts "\nHave you sourced your OpenStack creds today???\n"
 
-nodes = ['master','node1']
+# nodes = ['master','node1']
+nodes = ['node1']
 
 Vagrant.configure("2") do |config|
   config.vm.box = "openstack"
@@ -19,7 +20,8 @@ Vagrant.configure("2") do |config|
         else
           os.flavor = /m1.small/
         end             # Regex or String
-        os.image        = /ubuntu/                 # Regex or String
+        # os.image        = /vervet/                 # Regex or String
+        os.image        = "63953fb3-1675-47c5-a865-4873163f1cc8"
         os.keypair_name = "demo-keypair"      # as stored in Nova
         os.ssh_username = "ubuntu"           # login for the VM
         os.networks = ["demo-network"]
