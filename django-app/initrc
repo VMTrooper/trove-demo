@@ -1,0 +1,6 @@
+export DATABASE_NAME='django'
+export DATABASE_USER='troveadmin'
+export DATABASE_HOST='192.168.0.20'
+echo "Please enter your MySQL Password: "
+read -sr DB_PASSWORD_INPUT
+export DATABASE_PASSWORD=$DB_PASSWORD_INPUT
