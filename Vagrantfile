@@ -3,7 +3,7 @@
 puts "\nHave you sourced your OpenStack creds today???\n"
 
 # nodes = ['master','node1']
-nodes = ['node1']
+nodes = ['webapp']
 
 Vagrant.configure("2") do |config|
   config.vm.box = "openstack"
@@ -15,16 +15,11 @@ Vagrant.configure("2") do |config|
         os.username     = "#{ENV['OS_USERNAME']}"          # e.g. "#{ENV['OS_USERNAME']}"
         os.tenant_name = "#{ENV['OS_TENANT_NAME']}"
         os.api_key      = "#{ENV['OS_PASSWORD']}"          # e.g. "#{ENV['OS_PASSWORD']}"
-        if server == 'master'
-          os.flavor       = /m1.medium/ 
-        else
-          os.flavor = /m1.small/
-        end             # Regex or String
-        # os.image        = /vervet/                 # Regex or String
+        os.flavor = /m1.small/
         os.image        = "63953fb3-1675-47c5-a865-4873163f1cc8"
         os.keypair_name = "demo-keypair"      # as stored in Nova
         os.ssh_username = "ubuntu"           # login for the VM
-        os.networks = ["demo-network"]
+        os.networks = ["trove-network"]
         os.floating_ip = :auto
         os.floating_ip_pool = "EXTNET"
       end
